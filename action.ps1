@@ -13,7 +13,7 @@ try {
     Import-Module ActiveDirectory -ErrorAction Stop
     $user = Get-ADUser -Filter "userPrincipalName -eq '$($formObject.UserPrincipalName)'"
     if ($user) {
-        $null = Set-ADUser -User $user @formObject
+        $null = Set-ADUser -Identity $user @formObject
         $auditLog = @{
             Action            = 'UpdateAccount'
             System            = 'ActiveDirectory'
